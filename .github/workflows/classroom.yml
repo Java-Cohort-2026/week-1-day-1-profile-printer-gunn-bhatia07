@@ -22,7 +22,6 @@ jobs:
         command: javac src/Main.java && java -cp src Main
         input: ''
         expected-output: |-
-          ```text
           NAME
           ROLE
           DEPT
