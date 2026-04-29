@@ -15,7 +15,5 @@ public class Main {
         System.out.println("******************************************");
         System.out.println("*\tNAME:  Gunn Bhatia                           *\n*\tROLE: Data Analyst                             *\n*\tDEPT: IT Services                                   *");
         System.out.println("******************************************");
-
-        // END YOUR CODE ABOVE THIS LINE
     }
 }
