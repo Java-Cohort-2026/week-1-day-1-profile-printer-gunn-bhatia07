@@ -13,7 +13,7 @@ public class Main {
 
         // START YOUR CODE BELOW THIS LINE
         System.out.println("******************************************");
-        System.out.println("*\tEmployee Badge                                    *\n*\tName:  Gunn Bhatia                             *\n*\tRole: Data Analyst                                *\n*\tDept: IT Services                                    *");
+        System.out.println("*\tNAME:  Gunn Bhatia                           *\n*\tROLE: Data Analyst                             *\n*\tDEPT: IT Services                                   *");
         System.out.println("******************************************");
 
         // END YOUR CODE ABOVE THIS LINE
