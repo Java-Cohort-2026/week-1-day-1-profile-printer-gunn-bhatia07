@@ -1,0 +1,50 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Required Fields Check
+      id: required-fields-check
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Required Fields Check
+        setup-command: ''
+        command: javac src/Main.java && java -cp src Main
+        input: ''
+        expected-output: |-
+          ```text
+          NAME
+          ROLE
+          DEPT
+        comparison-method: contains
+        timeout: 2
+        max-score: 60
+    - name: Border Formatting Check
+      id: border-formatting-check
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Border Formatting Check
+        setup-command: ''
+        command: javac src/Main.java && java -cp src Main
+        input: ''
+        expected-output: "\\*|--"
+        comparison-method: regex
+        timeout: 2
+        max-score: 40
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        REQUIRED-FIELDS-CHECK_RESULTS: "${{steps.required-fields-check.outputs.result}}"
+        BORDER-FORMATTING-CHECK_RESULTS: "${{steps.border-formatting-check.outputs.result}}"
+      with:
+        runners: required-fields-check,border-formatting-check
